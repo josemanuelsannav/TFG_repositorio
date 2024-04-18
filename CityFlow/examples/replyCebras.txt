@@ -1,0 +1,500 @@
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_1 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_0 cebra_1 cebra_2 
+cebra_0 cebra_1 cebra_2 
+cebra_0 cebra_1 cebra_2 
+cebra_0 cebra_1 cebra_2 
+cebra_0 cebra_1 cebra_2 
+cebra_0 cebra_1 cebra_2 
+cebra_0 cebra_1 cebra_2 
+cebra_0 cebra_1 cebra_2 
+cebra_0 cebra_1 cebra_2 
+cebra_0 cebra_1 cebra_2 
+cebra_0 cebra_1 cebra_2 
+cebra_0 cebra_1 cebra_2 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_3 
+cebra_3 
+cebra_3 
+cebra_3 
+cebra_3 
+cebra_3 
+cebra_3 
+cebra_3 
+cebra_3 
+cebra_3 
+cebra_3 
+cebra_3 
+
+
+
+
+
+
+
+
+
+
+
+
+
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_3 
+cebra_3 
+cebra_3 
+cebra_3 
+
+
+
+
+
+cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 cebra_3 
+cebra_1 cebra_2 cebra_3 
+cebra_1 cebra_2 cebra_3 
+cebra_1 cebra_2 cebra_3 
+cebra_1 cebra_2 cebra_3 
+cebra_1 cebra_2 cebra_3 
+cebra_1 cebra_2 cebra_3 
+cebra_1 cebra_2 cebra_3 
+cebra_1 cebra_2 cebra_3 
+cebra_1 cebra_2 cebra_3 
+cebra_1 cebra_2 cebra_3 
+cebra_1 cebra_2 cebra_3 
+cebra_1 cebra_2 cebra_3 
+cebra_1 cebra_3 
+cebra_3 
+cebra_3 
+cebra_3 
+cebra_3 
+cebra_3 
+cebra_3 
+cebra_3 
+cebra_3 
+cebra_3 
+cebra_3 
+
+
+
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+
+
+
+
+
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_2 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_0 cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_1 cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_2 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_3 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_1 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_0 cebra_1 cebra_2 cebra_3 
+cebra_1 cebra_2 cebra_3 
+cebra_1 cebra_2 cebra_3 
+cebra_1 cebra_2 cebra_3 
+cebra_1 cebra_2 cebra_3 
+cebra_1 cebra_2 cebra_3 
+cebra_1 cebra_2 cebra_3 
+cebra_1 cebra_2 cebra_3 
