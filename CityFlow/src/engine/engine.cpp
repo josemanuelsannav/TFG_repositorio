@@ -235,6 +235,7 @@ namespace CityFlow
                         }
                     }
                 }
+
                 // Leer el archivo replay_roadnet.json
                 std::ifstream replayInputFile("replay_roadnet.json");
                 nlohmann::json replayData;
@@ -302,10 +303,78 @@ namespace CityFlow
                     }
                 }
 
+                // Leer el archivo replay_roadnet.json
+                /* std::ifstream replayInputFile("replay_roadnet.json");
+                 nlohmann::json replayData;
+                 replayInputFile >> replayData;
+                 replayInputFile.close();*/
+
+                auto cedas = roadnetData["cedas"];
+                nlohmann::json cedasJson = roadnetData["cedas"];
+                for (auto &cedaJson : cedasJson)
+                {
+                    Ceda ceda;
+                    ceda.id = cedaJson["id"].get<std::string>();
+                    ceda.road = cedaJson["road"].get<std::string>();
+                    auto road_it = std::find_if(roads_auxJson.begin(), roads_auxJson.end(), [&ceda](const nlohmann::json &roadJson)
+                                                { return roadJson["id"].get<std::string>() == ceda.road; });
+                    if (road_it != roads_auxJson.end())
+                    {
+                        auto points = (*road_it)["points"];
+                        if (!points.empty())
+                        {
+                            int x1 = points[0]["x"].get<int>();
+                            int y1 = points[0]["y"].get<int>();
+                            int x2 = points[1]["x"].get<int>();
+                            int y2 = points[1]["y"].get<int>();
+
+                            if (x1 > x2)
+                            {
+                                ceda.direccion = "izquierda";
+                                cedaJson["direccion"] = "izquierda"; // hacia donde va
+                                ceda.pos_x = x2 + 30;
+                                ceda.pos_y = y2 + 6;
+                                cedaJson["pos_x"] = ceda.pos_x;
+                                cedaJson["pos_y"] = ceda.pos_y;
+                            }
+                            else if (x1 < x2)
+                            {
+                                ceda.direccion = "derecha";
+                                cedaJson["direccion"] = "derecha";
+                                ceda.pos_x = x2 - 30;
+                                ceda.pos_y = y2 - 6;
+                                cedaJson["pos_x"] = ceda.pos_x;
+                                cedaJson["pos_y"] = ceda.pos_y;
+                            }
+                            else if (y1 > y2)
+                            {
+                                ceda.direccion = "abajo";
+                                cedaJson["direccion"] = "abajo";
+                                ceda.pos_x = x2 - 6;
+                                ceda.pos_y = y2 + 30;
+                                cedaJson["pos_x"] = ceda.pos_x;
+                                cedaJson["pos_y"] = ceda.pos_y;
+                            }
+                            else if (y1 < y2)
+                            {
+                                ceda.direccion = "arriba";
+                                cedaJson["direccion"] = "arriba";
+                                ceda.pos_x = x2 + 6;
+                                ceda.pos_y = y2 - 30;
+                                cedaJson["pos_x"] = ceda.pos_x;
+                                cedaJson["pos_y"] = ceda.pos_y;
+                            }
+
+                            this->lista_cedas.push_back(ceda);
+                        }
+                    }
+                }
+
                 // Añadir las "cebras" a la sección "static" del archivo replay_roadnet.json
                 replayData["static"]["cebras"] = cebrasJson;
                 replayData["static"]["stops"] = stopsJson;
                 replayData["static"]["notStops"] = notStopsJson;
+                replayData["static"]["cedas"] = cedasJson;
                 // Guardar el archivo replay_roadnet.json
                 std::ofstream replayOutputFile("replay_roadnet.json");
                 replayOutputFile << replayData.dump(4);

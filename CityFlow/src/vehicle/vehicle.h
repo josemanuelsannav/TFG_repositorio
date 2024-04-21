@@ -115,6 +115,8 @@ namespace CityFlow {
     /*/////////////////////////////////*/
         bool estaJustoDespuesDeCebra();
         bool estaEnStop();
+        bool estaEnCeda();
+        bool estaEncimaCeda();
         bool hayCochesViniendo();
         bool calleConStop();
         bool calleSinStop();

@@ -41,6 +41,7 @@ var edges = {};
 var lista_cebras = [];
 var lista_stops = [];
 var lista_notStops = [];
+var lista_cedas = [];   
 var logs;
 var gettingLog = false;
 
@@ -146,7 +147,6 @@ let chartLog;
 let showChart = false;
 let chartConainterDOM = document.getElementById("chart-container");
 function start() {
-    console.log("+++++++");
     if (loading) return;
     loading = true;
     infoReset();
@@ -344,6 +344,7 @@ function drawRoadnet() {
     cebras = [];
     stops = [];
     notStops = [];
+    cedas = [];
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     trafficLightsG = {};
 
@@ -386,6 +387,13 @@ function drawRoadnet() {
         notStops[notStop.id].pos_y = notStops[notStop.id].pos_y * -1;
     }
     lista_notStops = notStops;
+
+    for (let i = 0, len = roadnet.cedas.length; i < len; ++i) {
+        ceda = roadnet.cedas[i];
+        cedas[ceda.id] = ceda;
+        cedas[ceda.id].pos_y = cedas[ceda.id].pos_y * -1;
+    }
+    lista_cedas = cedas;
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * Draw Map
@@ -415,7 +423,6 @@ function drawRoadnet() {
     }
 
     for (edgeId in edges) {
-        console.log("El edge es: ", edges[edgeId]);
         let edgeGraphics;
         if (debugMode) {
             edgeGraphics = new Graphics();
@@ -453,6 +460,22 @@ function drawRoadnet() {
         }
 
         drawStop(stops[stopId], stopGraphics);
+    }
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////
+    /****************************************************************************************************
+     * Draw CEDA
+     *///////////////////////////////////////////////////////////////////////////////////////////////////
+    for (cedaId in cedas) {
+        let cedaGraphics;
+        if (debugMode) {
+
+            cedaGraphics = new Graphics();
+            mapContainer.addChild(cedaGraphics);
+        } else {
+            cedaGraphics = mapGraphics;
+        }
+
+        drawCeda(cedas[cedaId], cedaGraphics);
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
     /****************************************************************************************************
@@ -668,6 +691,12 @@ function drawEdge(edge, graphics) {
                 encontrado = true;
             }
         }
+        for(cedaId in cedas){
+            if(edge.id == cedas[cedaId].road){
+                console.log("Encontrado");
+                encontrado = true;
+            }
+        }
         if (!encontrado) {
             // Draw Traffic Lights
             if (i == points.length - 1 && !to.virtual) { // Draw traffic lights at the end of the road
@@ -815,6 +844,23 @@ function drawStop(stop, graphics) {
     // Establecer el estilo de llenado y trazo
     graphics.endFill(); // Terminar el llenado
 
+}
+function drawCeda(ceda, graphics) {
+    // Definir los puntos del triángulo
+    var triangle = new PIXI.Polygon([
+        ceda.pos_x, ceda.pos_y - 5 ,             // Primer punto
+        ceda.pos_x - 5, ceda.pos_y + 5,   // Segundo punto
+        ceda.pos_x + 5, ceda.pos_y + 5    // Tercer punto
+    ]);
+
+    // Dibujar el borde rojo
+    graphics.lineStyle(2, 0xFF0000, 1); // Grosor 2, color rojo, alfa 1
+    graphics.drawPolygon(triangle);
+    graphics.closePath();
+    // Dibujar el relleno blanco
+    graphics.beginFill(0xFFFFFF); // Color blanco
+    graphics.drawPolygon(triangle);
+    graphics.endFill();
 }
 
 function drawNotStop(notstop, graphics) {
@@ -994,7 +1040,7 @@ function drawStep(step) {
         tlLog = tlLogs[i].split(' '); //road_1_0_1 r r g los separa por espacios
         tlEdge = tlLog[0];//el primero es la carretera
         tlStatus = tlLog.slice(1);//el resto son los estados de los semaforos
-
+//////////////////////////////////////////////////////////////////////////////////////////////
         let encontrado = false;
         for(stopId in stops){
             if(tlEdge == stops[stopId].road){
@@ -1007,6 +1053,12 @@ function drawStep(step) {
                 encontrado = true;
             }
         }
+        for(cedaId in cedas){
+            if(tlEdge == cedas[cedaId].road){
+                encontrado = true;
+            }
+        }
+//////////////////////////////////////////////////////////////////////////////////////////////
         if (!encontrado) {
             for (let j = 0, len = tlStatus.length; j < len; ++j) {
                 trafficLightsG[tlEdge][j].tint = _statusToColor(tlStatus[j]);

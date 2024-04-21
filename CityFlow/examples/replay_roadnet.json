@@ -32,6 +32,38 @@
                 "pos_y": 150,
                 "road_from": "road_1_1_1",
                 "road_to": "road_1_2_3"
+            },
+            {
+                "direccion": "vertical",
+                "id": "cebra_4",
+                "pos_x": 0,
+                "pos_y": -150,
+                "road_from": "road_1_0_1",
+                "road_to": "road_1_2_3"
+            },
+            {
+                "direccion": "horizontal",
+                "id": "cebra_5",
+                "pos_x": -150,
+                "pos_y": 0,
+                "road_from": "road_0_1_0",
+                "road_to": "road_1_2_3"
+            }
+        ],
+        "cedas": [
+            {
+                "direccion": "izquierda",
+                "id": "ceda_0",
+                "pos_x": 30,
+                "pos_y": 606,
+                "road": "road_2_3_2"
+            },
+            {
+                "direccion": "derecha",
+                "id": "ceda_1",
+                "pos_x": -30,
+                "pos_y": 594,
+                "road": "road_0_3_0"
             }
         ],
         "edges": [
@@ -1968,6 +2000,20 @@
                 "pos_x": 30,
                 "pos_y": 6,
                 "road": "road_2_1_2"
+            },
+            {
+                "direccion": "abajo",
+                "id": "nonStop_2",
+                "pos_x": -6,
+                "pos_y": 630,
+                "road": "road_1_4_3"
+            },
+            {
+                "direccion": "arriba",
+                "id": "nonStop_3",
+                "pos_x": 6,
+                "pos_y": 570,
+                "road": "road_1_2_1"
             }
         ],
         "stops": [

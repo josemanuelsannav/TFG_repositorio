@@ -50,7 +50,8 @@ namespace CityFlow
         };
         std::vector<Stop> lista_stops;
 
-        struct NotStop{
+        struct NotStop
+        {
             std::string id;
             std::string road;
             int pos_x;
@@ -59,7 +60,15 @@ namespace CityFlow
         };
         std::vector<NotStop> lista_notStops;
 
-
+        struct Ceda
+        {
+            std::string id;
+            std::string road;
+            int pos_x;
+            int pos_y;
+            std::string direccion;
+        };
+        std::vector<Ceda> lista_cedas;
 
         std::map<int, std::pair<Vehicle *, int>> vehiclePool;
         std::map<std::string, Vehicle *> vehicleMap;
@@ -143,8 +152,6 @@ namespace CityFlow
 
         bool loadFlow(const std::string &jsonFilename);
 
-        
-
         void scheduleLaneChange();
 
         void insertShadow(Vehicle *vehicle);
@@ -168,6 +175,10 @@ namespace CityFlow
         const std::vector<NotStop> &getNotStops() const
         {
             return lista_notStops;
+        }
+        const std::vector<Ceda> &getCedas() const
+        {
+            return lista_cedas;
         }
         // Setter for the list of Cebras
         void setCebras(const std::vector<Cebra> &newCebras)

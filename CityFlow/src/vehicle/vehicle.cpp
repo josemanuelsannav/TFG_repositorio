@@ -417,7 +417,64 @@ namespace CityFlow
 
         ////////////////////////////////////////////////////////////////
 
-        // si la posicion del coche concuerda con la de la cebra , se para
+        if (estaEnStop())
+        {
+            if (contadorStop == 5)
+            {
+                if (!hayCochesViniendo())
+                {
+                    v = 16.0;
+                    contadorStop = 0;
+                }
+                else
+                {
+                    v = 0.0;
+                }
+            }
+            else
+            {
+                v = 0.0;
+                contadorStop++;
+            }
+        }
+
+        if (estaEnCeda())
+        {
+
+            if (contadorStop == 4)
+            {
+                if (!hayCochesViniendo())
+                {
+                    v = 16.0;
+                    contadorStop = 0;
+                }
+                else if(estaEncimaCeda())
+                {
+                    v = 0.0;
+                }
+            }
+            else
+            {
+                contadorStop++;
+                v = std::max(5.0, 16.0 - (3 * contadorStop));
+                v = min2double(v, getCarFollowSpeed(interval));
+            }
+        }
+
+        if (calleSinStop())
+        {
+            rand() % 2 == 0 ? v = 16.0 : v = 0.0;
+
+            if (this->getLeader() != nullptr && this->getLeader()->getCurLane() == this->getCurLane() && this->getLeader()->getSpeed() < v)
+            {
+                v = this->getLeader()->getSpeed();
+            }
+            if (this->getId() == "flow_7_3")
+            {
+                std::cout << "El vehiculo v: " << v << std::endl;
+            }
+        }
+
         for (auto cebra : engine->getCebras())
         {
 
@@ -448,35 +505,6 @@ namespace CityFlow
             }
         }
 
-        if (estaEnStop())
-        {
-            if (contadorStop == 5)
-            {
-                if (!hayCochesViniendo())
-                {
-                    std::cout << "El vehiculo : " << this->getId() << " avanza" << std::endl;
-                    v = 16.0;
-                    contadorStop = 0;
-                }
-                else
-                {
-                    v = 0.0;
-                }
-            }
-            else
-            {
-                v = 0.0;
-                contadorStop++;
-            }
-        }
-        if (calleSinStop())
-        {
-            rand() % 2 == 0 ? v = 16.0 : v = 0.0;
-            if (this->getLeader() != nullptr && this->getLeader()->getSpeed() < v)
-            {
-                v = this->getLeader()->getSpeed();
-            }
-        }
         ////////////////////////////////////////////////////////////////
 
         controlInfo.speed = v;
@@ -525,9 +553,54 @@ namespace CityFlow
         return false;
     }
 
+    bool Vehicle::estaEnCeda()
+    {
+        for (auto ceda : engine->getCedas())
+        {
+            if (this->getCurLane() != nullptr)
+            {
+                auto road = this->getCurLane()->getBelongRoad();
+                if (road != nullptr)
+                {
+                    auto roadId = road->getId();
+                    if (ceda.road == roadId)
+                    {
+                        // Tu código aquí
+                        if ((this->getPoint().x >= ceda.pos_x - 75 && this->getPoint().x <= ceda.pos_x + 75) && (this->getPoint().y <= ceda.pos_y + 75 && this->getPoint().y >= ceda.pos_y - 75))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+   bool Vehicle::estaEncimaCeda(){
+    for (auto ceda : engine->getCedas())
+        {
+            if (this->getCurLane() != nullptr)
+            {
+                auto road = this->getCurLane()->getBelongRoad();
+                if (road != nullptr)
+                {
+                    auto roadId = road->getId();
+                    if (ceda.road == roadId)
+                    {
+                        int dist = sqrt(pow(ceda.pos_x - this->getPoint().x, 2) + pow(ceda.pos_y - this->getPoint().y, 2));
+                        if(dist <=25){
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+   }
+   
     bool Vehicle::hayCochesViniendo()
     {
-        std::cout << "El vehiculo : "<<this->getId()<<" esta comproibando si vienen" << std::endl;
         // coger las carreteras
         if (this->getCurLane() == nullptr || this->getCurLane()->getBelongRoad() == nullptr)
         {
@@ -549,41 +622,36 @@ namespace CityFlow
                 {
                     for (auto coche : engine->getRunningVehicles())
                     {
-                        
-                            if (sinStop.direccion == "arriba")
+
+                        if (sinStop.direccion == "arriba")
+                        {
+                            if (coche->getPoint().x >= sinStop.pos_x - 6 && coche->getPoint().x <= sinStop.pos_x + 6 && coche->getPoint().y > sinStop.pos_y - 70 && coche->getPoint().y < sinStop.pos_y + 70)
                             {
-                                if (coche->getPoint().x >= sinStop.pos_x -6 && coche->getPoint().x <= sinStop.pos_x + 6 && coche->getPoint().y > sinStop.pos_y - 70 && coche->getPoint().y < sinStop.pos_y + 70)
-                                {
-                                    std::cout << "El coche : " << coche->getId() << " esta en la pos arriba" << std::endl;
-                                    return true;
-                                }
+                                return true;
                             }
-                            else if (sinStop.direccion == "abajo")
+                        }
+                        else if (sinStop.direccion == "abajo")
+                        {
+                            if (coche->getPoint().x >= sinStop.pos_x - 6 && coche->getPoint().x <= sinStop.pos_x + 6 && coche->getPoint().y < sinStop.pos_y + 70 && coche->getPoint().y > sinStop.pos_y - 70)
                             {
-                                if (coche->getPoint().x >= sinStop.pos_x -6 && coche->getPoint().x <= sinStop.pos_x + 6 &&  coche->getPoint().y < sinStop.pos_y + 70 && coche->getPoint().y > sinStop.pos_y - 70)
-                                {
-                                    std::cout << "El coche : " << coche->getId() << " esta en la pos abajo" << std::endl;
-                                    return true;
-                                }
+                                return true;
                             }
-                            else if (sinStop.direccion == "derecha")
+                        }
+                        else if (sinStop.direccion == "derecha")
+                        {
+                            if (coche->getPoint().y >= sinStop.pos_y - 6 && coche->getPoint().y <= sinStop.pos_y + 6 && coche->getPoint().x > sinStop.pos_x - 70 && coche->getPoint().x < sinStop.pos_x + 70)
                             {
-                                if (coche->getPoint().y >= sinStop.pos_y - 6 && coche->getPoint().y <= sinStop.pos_y + 6 && coche->getPoint().x > sinStop.pos_x - 70 && coche->getPoint().x < sinStop.pos_x + 70)
-                                {
-                                    std::cout << "El coche : " << coche->getId() << " esta en la pos derecha" << std::endl;
-                                    return true;
-                                }
+                                return true;
                             }
-                            else if (sinStop.direccion == "izquierda")
+                        }
+                        else if (sinStop.direccion == "izquierda")
+                        {
+                            if (coche->getPoint().y >= sinStop.pos_y - 6 && coche->getPoint().y <= sinStop.pos_y + 6 && coche->getPoint().x < sinStop.pos_x + 70 && coche->getPoint().x > sinStop.pos_x - 70)
+
                             {
-                                if (coche->getPoint().y >= sinStop.pos_y - 6 && coche->getPoint().y <= sinStop.pos_y + 6 && coche->getPoint().x < sinStop.pos_x +70 && coche->getPoint().x > sinStop.pos_x - 70)
-                                
-                                {
-                                    std::cout << "El coche : " << coche->getId() << " esta en la pos izquierda" << std::endl;
-                                    return true;
-                                }
+                                return true;
                             }
-                        
+                        }
                     }
                 }
             }
@@ -666,6 +734,7 @@ namespace CityFlow
         }
         return false;
     }
+
     bool Vehicle::calleSinStop()
     {
         if (this->getCurLane() == nullptr || this->getCurLane()->getBelongRoad() == nullptr)

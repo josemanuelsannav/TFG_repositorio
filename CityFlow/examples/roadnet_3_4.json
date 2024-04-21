@@ -1,4 +1,14 @@
 {
+  "cedas":[
+    {
+      "id": "ceda_0",
+      "road": "road_2_3_2"
+    },
+    {
+      "id": "ceda_1",
+      "road": "road_0_3_0"
+    }
+  ],
   "stops": [
     {
       "id": "stop_0",
@@ -18,6 +28,14 @@
     {
       "id": "nonStop_1",
       "road": "road_2_1_2"
+    },
+    {
+      "id": "nonStop_2",
+      "road": "road_1_4_3"
+    },
+    {
+      "id": "nonStop_3",
+      "road": "road_1_2_1"
     }
   ],
   "cebras": [
@@ -39,6 +57,16 @@
     {
       "id": "cebra_3",
       "road_from": "road_1_1_1",
+      "road_to": "road_1_2_3"
+    },
+    {
+      "id": "cebra_4",
+      "road_from": "road_1_0_1",
+      "road_to": "road_1_2_3"
+    },
+    {
+      "id": "cebra_5",
+      "road_from": "road_0_1_0",
       "road_to": "road_1_2_3"
     }
   ],
