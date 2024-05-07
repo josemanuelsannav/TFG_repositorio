@@ -12,15 +12,62 @@
 #include <random>
 #include <fstream>
 
+namespace CityFlow
+{
 
-namespace CityFlow {
-
-    class Engine {
+    class Engine
+    {
         friend class Archive;
+
     private:
-        static bool vehicleCmp(const std::pair<Vehicle *, double> &a, const std::pair<Vehicle *, double> &b) {
+        static bool vehicleCmp(const std::pair<Vehicle *, double> &a, const std::pair<Vehicle *, double> &b)
+        {
             return a.second > b.second;
         }
+
+        struct Cebra
+        {
+            std::string id;
+            std::string road;
+            bool is_activated;
+            int contador_cebra;
+            int pos_x;
+            int pos_y;
+            std::string direccion;
+            int contador_volver_a_parar;
+        };
+
+        std::vector<Cebra> lista_cebras;
+
+        struct Stop
+        {
+            std::string id;
+            std::string road;
+            int pos_x;
+            int pos_y;
+            std::string direccion;
+        };
+        std::vector<Stop> lista_stops;
+
+        struct NotStop
+        {
+            std::string id;
+            std::string road;
+            int pos_x;
+            int pos_y;
+            std::string direccion;
+        };
+        std::vector<NotStop> lista_notStops;
+
+        struct Ceda
+        {
+            std::string id;
+            std::string road;
+            int pos_x;
+            int pos_y;
+            std::string direccion;
+        };
+        std::vector<Ceda> lista_cedas;
 
         std::map<int, std::pair<Vehicle *, int>> vehiclePool;
         std::map<std::string, Vehicle *> vehicleMap;
@@ -73,8 +120,7 @@ namespace CityFlow {
 
         void planLaneChange();
 
-
-        void threadController(std::set<Vehicle *> &vehicles, 
+        void threadController(std::set<Vehicle *> &vehicles,
                               std::vector<Road *> &roads,
                               std::vector<Intersection *> &intersections,
                               std::vector<Drivable *> &drivables);
@@ -105,8 +151,6 @@ namespace CityFlow {
 
         bool loadFlow(const std::string &jsonFilename);
 
-        std::vector<const Vehicle *> getRunningVehicles(bool includeWaiting=false) const;
-
         void scheduleLaneChange();
 
         void insertShadow(Vehicle *vehicle);
@@ -114,7 +158,32 @@ namespace CityFlow {
     public:
         std::mt19937 rnd;
 
+        std::vector<const Vehicle *> getRunningVehicles(bool includeWaiting = false) const;
+
         Engine(const std::string &configFile, int threadNum);
+
+        // Getter for the list of Cebras
+        const std::vector<Cebra> &getCebras() const
+        {
+            return lista_cebras;
+        }
+        const std::vector<Stop> &getStops() const
+        {
+            return lista_stops;
+        }
+        const std::vector<NotStop> &getNotStops() const
+        {
+            return lista_notStops;
+        }
+        const std::vector<Ceda> &getCedas() const
+        {
+            return lista_cedas;
+        }
+        // Setter for the list of Cebras
+        void setCebras(const std::vector<Cebra> &newCebras)
+        {
+            lista_cebras = newCebras;
+        }
 
         double getInterval() const { return interval; }
 
@@ -125,6 +194,7 @@ namespace CityFlow {
         void notifyCross();
 
         void nextStep();
+        void crearReplayCebras();
 
         bool checkPriority(int priority);
 
@@ -169,7 +239,7 @@ namespace CityFlow {
         void setVehicleSpeed(const std::string &id, double speed);
 
         void setRandomSeed(int seed) { rnd.seed(seed); }
-        
+
         void reset(bool resetRnd = false);
 
         // archive
@@ -184,4 +254,4 @@ namespace CityFlow {
 
 }
 
-#endif //CITYFLOW_ENGINE_H
+#endif // CITYFLOW_ENGINE_H

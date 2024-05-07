@@ -418,7 +418,11 @@ def gridToRoadnet(rowNumber, columnNumber, rowDistances, columnDistances, outRow
 
     return {
         "intersections": final_intersecions,
-        "roads": final_roads
+        "roads": final_roads,
+        "cebras": [],
+        "stops": [],
+        "notStops": [],
+        "cedas": []
     }
 
 if __name__ == "__main__":

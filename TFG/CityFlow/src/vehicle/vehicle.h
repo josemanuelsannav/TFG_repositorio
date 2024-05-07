@@ -112,7 +112,16 @@ namespace CityFlow {
         Flow *flow;
 
     public:
-
+    /*/////////////////////////////////*/
+        bool estaJustoDespuesDeCebra();
+        bool estaEnStop();
+        bool estaEnCeda();
+        bool estaEncimaCeda();
+        bool hayCochesViniendo();
+        bool calleConStop();
+        bool calleSinStop();
+        int contadorStop = 0;
+        //////////////////////////////////
         bool isStraightHold = false;
 
         Vehicle(const Vehicle &vehicle, Flow *flow = nullptr);

@@ -416,6 +416,9 @@ namespace CityFlow {
         std::vector<LaneLink *> laneLinkPointers;
         int index;
     public:
+        ///  ///////////////////
+        Intersection *getIntersection() const { return this->intersection; }
+        /// //////////////////// //
         const std::vector<LaneLink> &getLaneLinks() const { return this->laneLinks; }
 
         std::vector<LaneLink> &getLaneLinks() { return this->laneLinks; }
@@ -427,6 +430,7 @@ namespace CityFlow {
         Road *getEndRoad() const { return this->endRoad; }
 
         bool isAvailable() const {
+            
             return this->intersection->trafficLight.getCurrentPhase().roadLinkAvailable[this->index];
         }
 
