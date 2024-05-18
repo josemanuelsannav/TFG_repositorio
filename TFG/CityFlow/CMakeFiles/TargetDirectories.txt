@@ -1,8 +1,0 @@
-/mnt/c/Users/josem/CityFlow/CMakeFiles/cityflow.dir
-/mnt/c/Users/josem/CityFlow/CMakeFiles/edit_cache.dir
-/mnt/c/Users/josem/CityFlow/CMakeFiles/rebuild_cache.dir
-/mnt/c/Users/josem/CityFlow/extern/pybind11/CMakeFiles/edit_cache.dir
-/mnt/c/Users/josem/CityFlow/extern/pybind11/CMakeFiles/rebuild_cache.dir
-/mnt/c/Users/josem/CityFlow/src/CMakeFiles/cityflow_lib.dir
-/mnt/c/Users/josem/CityFlow/src/CMakeFiles/edit_cache.dir
-/mnt/c/Users/josem/CityFlow/src/CMakeFiles/rebuild_cache.dir
