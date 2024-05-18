@@ -8,6 +8,8 @@ To generate a 3x4 grid road network
 
 ```
 python generate_grid_scenario.py 3 4 
+
+python3 generate_grid_scenario.py 2 2
 ```
 
 To generate a 3x4 grid road network with 2 straight lanes and with a predefined working traffic light plan

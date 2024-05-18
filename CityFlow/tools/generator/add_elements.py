@@ -1,3 +1,4 @@
+#python3 add_elements.py roadnet_3_4.json cebras road_0_1_0 road_2_1_2 stops road_1_1_1 notStops road_2_2_2 cedas road_1_1_1 road_3_3_3 
 import json
 import sys
 

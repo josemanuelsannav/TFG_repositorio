@@ -41,7 +41,7 @@ var edges = {};
 var lista_cebras = [];
 var lista_stops = [];
 var lista_notStops = [];
-var lista_cedas = [];   
+var lista_cedas = [];
 var logs;
 var gettingLog = false;
 
@@ -449,23 +449,24 @@ function drawRoadnet() {
     /****************************************************************************************************
      * Draw Stop
      *///////////////////////////////////////////////////////////////////////////////////////////////////
-    for (stopId in stops) {
-        let stopGraphics;
-        if (debugMode) {
+    /* for (stopId in stops) {
+         let stopGraphics;
+         if (debugMode) {
+ 
+             stopGraphics = new Graphics();
+             mapContainer.addChild(stopGraphics);
+         } else {
+             stopGraphics = mapGraphics;
+         }
+ 
+         drawStop(stops[stopId], stopGraphics);
+     }*/
 
-            stopGraphics = new Graphics();
-            mapContainer.addChild(stopGraphics);
-        } else {
-            stopGraphics = mapGraphics;
-        }
-
-        drawStop(stops[stopId], stopGraphics);
-    }
- ///////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
     /****************************************************************************************************
      * Draw CEDA
      *///////////////////////////////////////////////////////////////////////////////////////////////////
-    for (cedaId in cedas) {
+    /*for (cedaId in cedas) {
         let cedaGraphics;
         if (debugMode) {
 
@@ -476,12 +477,56 @@ function drawRoadnet() {
         }
 
         drawCeda(cedas[cedaId], cedaGraphics);
-    }
+    }*/
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+    /****************************************************************************************************
+     * Draw CEDA y STOP con PNG
+     *///////////////////////////////////////////////////////////////////////////////////////////////////
+    PIXI.loader
+        .add('stopImage', 'stopImage.png')
+        .add('cedaImage', 'cedaImage.png');
+
+    PIXI.loader.load((loader, resources) => {
+        for (let cedaId in cedas) {
+            let cedaSprite;
+            if (debugMode) {
+                cedaSprite = new PIXI.Sprite(resources.cedaImage.texture);
+                mapContainer.addChild(cedaSprite);
+            } else {
+                cedaSprite = new PIXI.Sprite(resources.cedaImage.texture);
+                mapGraphics.addChild(cedaSprite);
+            }
+
+            // Asegúrate de que la posición del sprite es correcta
+            cedaSprite.x = cedas[cedaId].pos_x - 3;
+            cedaSprite.y = cedas[cedaId].pos_y - 3;
+            cedaSprite.width = 6;  // Cambia esto al ancho deseado
+            cedaSprite.height = 6; // Cambia esto a la altura deseada
+
+        }
+        for (let stopId in stops) {
+            let stopSprite;
+            if (debugMode) {
+                stopSprite = new PIXI.Sprite(resources.stopImage.texture);
+                mapContainer.addChild(stopSprite);
+            } else {
+                stopSprite = new PIXI.Sprite(resources.stopImage.texture);
+                mapGraphics.addChild(stopSprite);
+            }
+
+            // Asegúrate de que la posición del sprite es correcta
+            stopSprite.x = stops[stopId].pos_x - 3;
+            stopSprite.y = stops[stopId].pos_y - 3;
+            stopSprite.width = 6;  // Cambia esto al ancho deseado
+            stopSprite.height = 6; // Cambia esto a la altura deseada
+        }
+    });
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
     /****************************************************************************************************
      * Draw NOT Stop
      *///////////////////////////////////////////////////////////////////////////////////////////////////
-     for (notstopId in notStops) {
+    for (notstopId in notStops) {
         let notstopGraphics;
         if (debugMode) {
 
@@ -681,19 +726,18 @@ function drawEdge(edge, graphics) {
         lightTexture = renderer.generateTexture(lightG);
 
         let encontrado = false;
-        for(stopId in stops){
-            if(edge.id == stops[stopId].road){
+        for (stopId in stops) {
+            if (edge.id == stops[stopId].road) {
                 encontrado = true;
             }
         }
-        for(notstopId in notStops){
-            if(edge.id == notStops[notstopId].road){
+        for (notstopId in notStops) {
+            if (edge.id == notStops[notstopId].road) {
                 encontrado = true;
             }
         }
-        for(cedaId in cedas){
-            if(edge.id == cedas[cedaId].road){
-                console.log("Encontrado");
+        for (cedaId in cedas) {
+            if (edge.id == cedas[cedaId].road) {
                 encontrado = true;
             }
         }
@@ -774,9 +818,8 @@ function drawEdge(edge, graphics) {
 function drawCebra(cebra, graphics, edges) {
 
     for (edgeId in edges) {
-        //console.log('La cebra es: ',cebra);
         let edge = edges[edgeId];
-        if (edge.id === cebra.road_from) {
+        if (edge.id === cebra.road) {
 
             let points = edge.points;
             // Initialize pointA and pointB with the first and last points of the road
@@ -805,6 +848,29 @@ function drawCebra(cebra, graphics, edges) {
             graphics.drawRect(squareX - squareSize / 2, squareY - squareSize / 2, squareSize, squareSize);
             graphics.endFill();
 
+
+            /////////////////
+            if (cebra.direccion == "vertical") {
+                // Dibujar las franjas blancas
+                let numberOfStripes = 6; // Cambia esto para cambiar el número de franjas
+                let stripeWidth = squareSize / numberOfStripes;
+                for (let i = 0; i < numberOfStripes; i++) {
+                    graphics.lineStyle(2, 0xFFFFFF, 1); // Grosor 2, color blanco, alfa 1
+                    graphics.moveTo(squareX - (squareSize / 2) + i * stripeWidth, squareY - (squareSize / 2));
+                    graphics.lineTo(squareX - (squareSize / 2) + i * stripeWidth, squareY + (squareSize / 2));
+                }
+            } else {
+                // Dibujar las franjas blancas
+                let numberOfStripes = 6; // Cambia esto para cambiar el número de franjas
+                let stripeWidth = squareSize / numberOfStripes;
+                for (let i = 0; i < numberOfStripes; i++) {
+                    graphics.lineStyle(2, 0xFFFFFF, 1);
+                    graphics.moveTo(squareX - (squareSize / 2), squareY - (squareSize / 2) + i * stripeWidth);
+                    graphics.lineTo(squareX + (squareSize / 2), squareY - (squareSize / 2) + i * stripeWidth);
+                }
+            }
+
+
             // Break the loop as we've found and drawn the matching edge
             break;
         }
@@ -812,7 +878,6 @@ function drawCebra(cebra, graphics, edges) {
 }
 
 function drawStop(stop, graphics) {
-    //console.log("La parada es: ",stop);
     // Definir las propiedades del octógono
     const x = stop.pos_x; // Centro en el eje x
     const y = stop.pos_y; // Centro en el eje y
@@ -828,7 +893,6 @@ function drawStop(stop, graphics) {
         x + Math.cos(0) * radius,
         y + Math.sin(0) * radius
     );
-
     // Dibujar los lados del octógono
     for (let i = 1; i <= sides; i++) {
         const angle = angleStep * i;
@@ -837,18 +901,16 @@ function drawStop(stop, graphics) {
             y + Math.sin(angle) * radius
         );
     }
-
     // Cerrar el octógono
     graphics.closePath();
-
     // Establecer el estilo de llenado y trazo
     graphics.endFill(); // Terminar el llenado
-
 }
+
 function drawCeda(ceda, graphics) {
     // Definir los puntos del triángulo
     var triangle = new PIXI.Polygon([
-        ceda.pos_x, ceda.pos_y - 5 ,             // Primer punto
+        ceda.pos_x, ceda.pos_y - 5,             // Primer punto
         ceda.pos_x - 5, ceda.pos_y + 5,   // Segundo punto
         ceda.pos_x + 5, ceda.pos_y + 5    // Tercer punto
     ]);
@@ -864,11 +926,11 @@ function drawCeda(ceda, graphics) {
 }
 
 function drawNotStop(notstop, graphics) {
-    
+
     graphics.beginFill(0x0000ff); // Color azul
 
     // Dibujar un cuadrado con centro en notstop.x, notstop.y y lado 12
-    graphics.drawRect(notstop.pos_x - 100, notstop.pos_y- 6, 100, 12);
+    graphics.drawRect(notstop.pos_x - 100, notstop.pos_y - 6, 100, 12);
 
     // Terminar el llenado
     graphics.endFill();
@@ -928,7 +990,7 @@ function drawPeaton(step, peatonGraphics) {
         .then(text => {
             data = text;
 
-            
+
             const lines = data.split('\n');
             const stepLine = lines[step];
             const stepData = stepLine.split(' ');
@@ -945,25 +1007,24 @@ function drawPeaton(step, peatonGraphics) {
                                 peatonGraphics.beginFill(0x000000); // Color de relleno negro
                                 peatonGraphics.drawCircle(lista_cebras[cebra].pos_x, (lista_cebras[cebra].pos_y - 16), 2); // Dibujar un círculo en (100, 100) con radio 50
                                 peatonGraphics.endFill();
-
                                 lista_cebras[cebra].cont--;
+
                             } else if (lista_cebras[cebra].cont > 6 && lista_cebras[cebra].cont <= 12) {
                                 peatonGraphics.beginFill(0x000000); // Color de relleno negro
                                 peatonGraphics.drawCircle(lista_cebras[cebra].pos_x, (lista_cebras[cebra].pos_y - 8), 2); // Dibujar un círculo en (100, 100) con radio 50
                                 peatonGraphics.endFill();
-
                                 lista_cebras[cebra].cont--;
+
                             } else if (lista_cebras[cebra].cont > 12 && lista_cebras[cebra].cont <= 18) {
                                 peatonGraphics.beginFill(0x000000); // Color de relleno negro
                                 peatonGraphics.drawCircle(lista_cebras[cebra].pos_x, (lista_cebras[cebra].pos_y + 8), 2); // Dibujar un círculo en (100, 100) con radio 50
                                 peatonGraphics.endFill();
-
                                 lista_cebras[cebra].cont--;
+
                             } else if (lista_cebras[cebra].cont > 18 && lista_cebras[cebra].cont <= 24) {
                                 peatonGraphics.beginFill(0x000000); // Color de relleno negro
                                 peatonGraphics.drawCircle(lista_cebras[cebra].pos_x, (lista_cebras[cebra].pos_y + 16), 2); // Dibujar un círculo en (100, 100) con radio 50
                                 peatonGraphics.endFill();
-
                                 lista_cebras[cebra].cont--;
 
                             } else if (lista_cebras[cebra].cont == 0) {
@@ -974,26 +1035,154 @@ function drawPeaton(step, peatonGraphics) {
                                 peatonGraphics.beginFill(0x000000); // Color de relleno negro
                                 peatonGraphics.drawCircle(lista_cebras[cebra].pos_x - 16, (lista_cebras[cebra].pos_y), 2); // Dibujar un círculo en (100, 100) con radio 50
                                 peatonGraphics.endFill();
-
                                 lista_cebras[cebra].cont--;
+
                             } else if (lista_cebras[cebra].cont > 6 && lista_cebras[cebra].cont <= 12) {
                                 peatonGraphics.beginFill(0x000000); // Color de relleno negro
                                 peatonGraphics.drawCircle(lista_cebras[cebra].pos_x - 8, (lista_cebras[cebra].pos_y), 2); // Dibujar un círculo en (100, 100) con radio 50
                                 peatonGraphics.endFill();
-
                                 lista_cebras[cebra].cont--;
+
                             } else if (lista_cebras[cebra].cont > 12 && lista_cebras[cebra].cont <= 18) {
                                 peatonGraphics.beginFill(0x000000); // Color de relleno negro
                                 peatonGraphics.drawCircle(lista_cebras[cebra].pos_x + 8, (lista_cebras[cebra].pos_y), 2); // Dibujar un círculo en (100, 100) con radio 50
                                 peatonGraphics.endFill();
-
                                 lista_cebras[cebra].cont--;
+
                             } else if (lista_cebras[cebra].cont > 18 && lista_cebras[cebra].cont <= 24) {
                                 peatonGraphics.beginFill(0x000000); // Color de relleno negro
                                 peatonGraphics.drawCircle(lista_cebras[cebra].pos_x + 16, (lista_cebras[cebra].pos_y), 2); // Dibujar un círculo en (100, 100) con radio 50
                                 peatonGraphics.endFill();
+                                lista_cebras[cebra].cont--;
+
+                            } else if (lista_cebras[cebra].cont == 0) {
+                                lista_cebras[cebra].cont = 24;
+                            }
+                        }
+
+                    }
+                }
+
+            }
+        })
+        .catch(error => console.error(error));
+}
+
+PIXI.loader.add('peatonImage', 'peatonImage.png');
+let peatonSprites = [];
+
+function drawPeatonPng(step,resources) {
+    // Read the data from the txt file
+    let data;
+
+    fetch('../examples/replyCebras.txt')
+        .then(response => response.text())
+        .then(text => {
+            data = text;
+
+
+            const lines = data.split('\n');
+            const stepLine = lines[step];
+            const stepData = stepLine.split(' ');
+            if (stepData.length == 0) {
+                //   console.log("No hay peatones en ningun paso");
+            }
+
+            for (let i = 0; i < stepData.length; i++) {
+                let peaton = stepData[i];
+                for (let cebra in lista_cebras) {
+                    if (peaton == lista_cebras[cebra].id) {
+                        if (lista_cebras[cebra].direccion == "horizontal") {
+                            if (lista_cebras[cebra].cont <= 6 && lista_cebras[cebra].cont > 0) {
+
+                                let peatonSprite = new PIXI.Sprite(resources.peatonImage.texture);
+                                simulatorContainer.addChild(peatonSprite);
+                                peatonSprite.x = lista_cebras[cebra].pos_x; // Reemplaza esto con la posición x del peatón
+                                peatonSprite.y = lista_cebras[cebra].pos_y - 16; // Reemplaza esto con la posición y del peatón
+                                peatonSprite.width = 4;  // Cambia esto al ancho deseado
+                                peatonSprite.height = 4; // Cambia esto a la altura deseada
+                                lista_cebras[cebra].cont--;
+                                peatonSprites.push(peatonSprite);
+
+                            } else if (lista_cebras[cebra].cont > 6 && lista_cebras[cebra].cont <= 12) {
+                                let peatonSprite = new PIXI.Sprite(resources.peatonImage.texture);
+                                simulatorContainer.addChild(peatonSprite);
+                                peatonSprite.x = lista_cebras[cebra].pos_x; // Reemplaza esto con la posición x del peatón
+                                peatonSprite.y = lista_cebras[cebra].pos_y - 8; // Reemplaza esto con la posición y del peatón
+                                peatonSprite.width = 4;  // Cambia esto al ancho deseado
+                                peatonSprite.height = 4; // Cambia esto a la altura deseada
+                                lista_cebras[cebra].cont--;
+                                peatonSprites.push(peatonSprite);
+
+                            } else if (lista_cebras[cebra].cont > 12 && lista_cebras[cebra].cont <= 18) {
+                                let peatonSprite = new PIXI.Sprite(resources.peatonImage.texture);
+                                simulatorContainer.addChild(peatonSprite);
+                                peatonSprite.x = lista_cebras[cebra].pos_x; // Reemplaza esto con la posición x del peatón
+                                peatonSprite.y = lista_cebras[cebra].pos_y + 8; // Reemplaza esto con la posición y del peatón
+                                peatonSprite.width = 4;  // Cambia esto al ancho deseado
+                                peatonSprite.height = 4; // Cambia esto a la altura deseada
+                                lista_cebras[cebra].cont--;
+                                peatonSprites.push(peatonSprite);
+
+                            } else if (lista_cebras[cebra].cont > 18 && lista_cebras[cebra].cont <= 24) {
+                                let peatonSprite = new PIXI.Sprite(resources.peatonImage.texture);
+                                simulatorContainer.addChild(peatonSprite);
+                                peatonSprite.x = lista_cebras[cebra].pos_x; // Reemplaza esto con la posición x del peatón
+                                peatonSprite.y = lista_cebras[cebra].pos_y + 8; // Reemplaza esto con la posición y del peatón
+                                peatonSprite.width = 4;  // Cambia esto al ancho deseado
+                                peatonSprite.height = 4; // Cambia esto a la altura deseada
+                                lista_cebras[cebra].cont--;
+                                peatonSprites.push(peatonSprite);
+
+                            } else if (lista_cebras[cebra].cont == 0) {
+                                lista_cebras[cebra].cont = 24;
+                            }
+
+                        } else {
+                            if (lista_cebras[cebra].cont <= 6 && lista_cebras[cebra].cont > 0) {
+
+                                let peatonSprite = new PIXI.Sprite(resources.peatonImage.texture);
+                                simulatorContainer.addChild(peatonSprite);
+                                peatonSprite.x = lista_cebras[cebra].pos_x - 16; // Reemplaza esto con la posición x del peatón
+                                peatonSprite.y = lista_cebras[cebra].pos_y; // Reemplaza esto con la posición y del peatón
+                                peatonSprite.width = 4;  // Cambia esto al ancho deseado
+                                peatonSprite.height = 4; // Cambia esto a la altura deseada
+                                lista_cebras[cebra].cont--;
+                                peatonSprites.push(peatonSprite);
+
+                            } else if (lista_cebras[cebra].cont > 6 && lista_cebras[cebra].cont <= 12) {
+
+                                let peatonSprite = new PIXI.Sprite(resources.peatonImage.texture);
+                                simulatorContainer.addChild(peatonSprite);
+                                peatonSprite.x = lista_cebras[cebra].pos_x - 8; // Reemplaza esto con la posición x del peatón
+                                peatonSprite.y = lista_cebras[cebra].pos_y; // Reemplaza esto con la posición y del peatón
+                                peatonSprite.width = 4;  // Cambia esto al ancho deseado
+                                peatonSprite.height = 4; // Cambia esto a la altura deseada
+                                lista_cebras[cebra].cont--;
+                                peatonSprites.push(peatonSprite);
+
+                            } else if (lista_cebras[cebra].cont > 12 && lista_cebras[cebra].cont <= 18) {
+                                let peatonSprite = new PIXI.Sprite(resources.peatonImage.texture);
+                                simulatorContainer.addChild(peatonSprite);
+                                peatonSprite.x = lista_cebras[cebra].pos_x + 8; // Reemplaza esto con la posición x del peatón
+                                peatonSprite.y = lista_cebras[cebra].pos_y; // Reemplaza esto con la posición y del peatón
+                                peatonSprite.width = 4;  // Cambia esto al ancho deseado
+                                peatonSprite.height = 4; // Cambia esto a la altura deseada
 
                                 lista_cebras[cebra].cont--;
+                                peatonSprites.push(peatonSprite);
+
+                            } else if (lista_cebras[cebra].cont > 18 && lista_cebras[cebra].cont <= 24) {
+
+                                let peatonSprite = new PIXI.Sprite(resources.peatonImage.texture);
+                                simulatorContainer.addChild(peatonSprite);
+                                peatonSprite.x = lista_cebras[cebra].pos_x + 16; // Reemplaza esto con la posición x del peatón
+                                peatonSprite.y = lista_cebras[cebra].pos_y; // Reemplaza esto con la posición y del peatón
+                                peatonSprite.width = 4;  // Cambia esto al ancho deseado
+                                peatonSprite.height = 4; // Cambia esto a la altura deseada
+
+                                lista_cebras[cebra].cont--;
+                                peatonSprites.push(peatonSprite);
 
                             } else if (lista_cebras[cebra].cont == 0) {
                                 lista_cebras[cebra].cont = 24;
@@ -1012,7 +1201,7 @@ const peatonGraphics = new Graphics();
 let contador_aux = -1;
 
 function drawStep(step) {
-    console.log("step : ", step);
+    //console.log("step : ", step);
     if (showChart && (step > chart.ptr || step == 0)) {
         if (step == 0) {
             chart.clear();
@@ -1022,17 +1211,32 @@ function drawStep(step) {
     }
     //////////////////////
 
-    if (contador_aux != step) {
+  /*  if (contador_aux != step) {
         peatonGraphics.clear()
         simulatorContainer.addChild(peatonGraphics);
         drawPeaton(step, peatonGraphics);
         contador_aux = step;
+    }*/
+    try {
+        if (contador_aux != step) {
+            for (let sprite of peatonSprites) {
+                simulatorContainer.removeChild(sprite);
+            }
+            peatonSprites = [];
+            peatonGraphics.clear()
+            PIXI.loader.load((loader, resources) => {
+                drawPeatonPng(step,resources); 
+            });
+            contador_aux = step;
+        }
+    } catch (error) {
+        console.error("An error occurred:", error);
     }
 
     //////////////////////
     let [carLogs, tlLogs] = logs[step].split(';'); //tlLogs = traffic light logs ( road_1_0_1 r r g , road_2_0_1 r r g , road_3_0_1 r r g) 
     tlLogs = tlLogs.split(','); //los separamos por las comas
-    
+
     carLogs = carLogs.split(',');
 
     let tlLog, tlEdge, tlStatus;////////////////////////////////////////////////////////////draw trafic light
@@ -1040,25 +1244,24 @@ function drawStep(step) {
         tlLog = tlLogs[i].split(' '); //road_1_0_1 r r g los separa por espacios
         tlEdge = tlLog[0];//el primero es la carretera
         tlStatus = tlLog.slice(1);//el resto son los estados de los semaforos
-//////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////
         let encontrado = false;
-        for(stopId in stops){
-            if(tlEdge == stops[stopId].road){
+        for (stopId in stops) {
+            if (tlEdge == stops[stopId].road) {
                 encontrado = true;
             }
         }
-        console.log(notStops);
-         for(notstopId in notStops){
-            if(tlEdge == notStops[notstopId].road){
+        for (notstopId in notStops) {
+            if (tlEdge == notStops[notstopId].road) {
                 encontrado = true;
             }
         }
-        for(cedaId in cedas){
-            if(tlEdge == cedas[cedaId].road){
+        for (cedaId in cedas) {
+            if (tlEdge == cedas[cedaId].road) {
                 encontrado = true;
             }
         }
-//////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////
         if (!encontrado) {
             for (let j = 0, len = tlStatus.length; j < len; ++j) {
                 trafficLightsG[tlEdge][j].tint = _statusToColor(tlStatus[j]);

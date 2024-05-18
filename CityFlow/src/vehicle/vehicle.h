@@ -121,6 +121,9 @@ namespace CityFlow {
         bool calleConStop();
         bool calleSinStop();
         int contadorStop = 0;
+        
+        int contadorAux = 0;
+        std::string idRoadAux = "";
         //////////////////////////////////
         bool isStraightHold = false;
 

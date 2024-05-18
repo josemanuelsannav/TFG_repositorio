@@ -86,7 +86,6 @@ namespace CityFlow
 
             if (saveReplay)
             {
-                // std::cout << "save replay" << std::endl;
 
                 std::string roadnetLogFile = getJsonMember<const char *>("roadnetLogFile", document);
                 std::string replayLogFile = getJsonMember<const char *>("replayLogFile", document);
@@ -122,15 +121,14 @@ namespace CityFlow
                     // Crear un objeto Cebra y llenarlo con los datos del objeto JSON
                     Cebra cebra;
                     cebra.id = cebraJson["id"].get<std::string>();
-                    cebra.road_from = cebraJson["road_from"].get<std::string>();
-                    cebra.road_to = cebraJson["road_to"].get<std::string>();
+                    cebra.road= cebraJson["road"].get<std::string>();
                     cebra.is_activated = false;
                     cebra.contador_cebra = 0;
                     cebra.contador_volver_a_parar = 0;
 
                     // Buscar la carretera asociada con la cebra
                     auto road_it = std::find_if(roads_auxJson.begin(), roads_auxJson.end(), [&cebra](const nlohmann::json &roadJson)
-                                                { return roadJson["id"].get<std::string>() == cebra.road_from; });
+                                                { return roadJson["id"].get<std::string>() == cebra.road; });
 
                     // Si se encontró la carretera, obtener los puntos
 
@@ -518,6 +516,7 @@ namespace CityFlow
         }
         else
         {
+           
             nextSpeed = vehicle.getNextSpeed(interval).speed;
         }
 
@@ -1072,14 +1071,12 @@ namespace CityFlow
 
     void Engine::crearReplayCebras()
     {
-        // std::cout << "Creando replay cebras" << std::endl;
         std::ofstream file("../examples/replyCebras.txt", std::ios::app);
 
         for (const auto &cebra : lista_cebras)
         {
             if (cebra.is_activated)
             {
-                // std::cout << "Cebra activada: " << cebra.id << std::endl;
                 file << cebra.id << " ";
             }
         }

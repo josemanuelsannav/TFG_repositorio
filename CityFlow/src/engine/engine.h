@@ -28,8 +28,7 @@ namespace CityFlow
         struct Cebra
         {
             std::string id;
-            std::string road_from;
-            std::string road_to;
+            std::string road;
             bool is_activated;
             int contador_cebra;
             int pos_x;
