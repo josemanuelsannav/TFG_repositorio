@@ -8,6 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/mnt/c/Users/josem/CityFlow/src/Signals/classCebra.cpp" "src/CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.o" "gcc" "src/CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.o.d"
+  "/mnt/c/Users/josem/CityFlow/src/Signals/classCeda.cpp" "src/CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.o" "gcc" "src/CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.o.d"
+  "/mnt/c/Users/josem/CityFlow/src/Signals/classNotSignal.cpp" "src/CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.o" "gcc" "src/CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.o.d"
+  "/mnt/c/Users/josem/CityFlow/src/Signals/classStop.cpp" "src/CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.o" "gcc" "src/CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.o.d"
   "/mnt/c/Users/josem/CityFlow/src/engine/archive.cpp" "src/CMakeFiles/cityflow_lib.dir/engine/archive.cpp.o" "gcc" "src/CMakeFiles/cityflow_lib.dir/engine/archive.cpp.o.d"
   "/mnt/c/Users/josem/CityFlow/src/engine/engine.cpp" "src/CMakeFiles/cityflow_lib.dir/engine/engine.cpp.o" "gcc" "src/CMakeFiles/cityflow_lib.dir/engine/engine.cpp.o.d"
   "/mnt/c/Users/josem/CityFlow/src/flow/flow.cpp" "src/CMakeFiles/cityflow_lib.dir/flow/flow.cpp.o" "gcc" "src/CMakeFiles/cityflow_lib.dir/flow/flow.cpp.o.d"

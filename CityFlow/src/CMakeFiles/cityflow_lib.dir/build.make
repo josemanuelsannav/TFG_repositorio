@@ -209,6 +209,62 @@ src/CMakeFiles/cityflow_lib.dir/vehicle/lanechange.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cityflow_lib.dir/vehicle/lanechange.cpp.s"
 	cd /mnt/c/Users/josem/CityFlow/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/josem/CityFlow/src/vehicle/lanechange.cpp -o CMakeFiles/cityflow_lib.dir/vehicle/lanechange.cpp.s
 
+src/CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.o: src/CMakeFiles/cityflow_lib.dir/flags.make
+src/CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.o: src/Signals/classCebra.cpp
+src/CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.o: src/CMakeFiles/cityflow_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/josem/CityFlow/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.o"
+	cd /mnt/c/Users/josem/CityFlow/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.o -MF CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.o.d -o CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.o -c /mnt/c/Users/josem/CityFlow/src/Signals/classCebra.cpp
+
+src/CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.i"
+	cd /mnt/c/Users/josem/CityFlow/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/josem/CityFlow/src/Signals/classCebra.cpp > CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.i
+
+src/CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.s"
+	cd /mnt/c/Users/josem/CityFlow/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/josem/CityFlow/src/Signals/classCebra.cpp -o CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.s
+
+src/CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.o: src/CMakeFiles/cityflow_lib.dir/flags.make
+src/CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.o: src/Signals/classCeda.cpp
+src/CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.o: src/CMakeFiles/cityflow_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/josem/CityFlow/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.o"
+	cd /mnt/c/Users/josem/CityFlow/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.o -MF CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.o.d -o CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.o -c /mnt/c/Users/josem/CityFlow/src/Signals/classCeda.cpp
+
+src/CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.i"
+	cd /mnt/c/Users/josem/CityFlow/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/josem/CityFlow/src/Signals/classCeda.cpp > CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.i
+
+src/CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.s"
+	cd /mnt/c/Users/josem/CityFlow/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/josem/CityFlow/src/Signals/classCeda.cpp -o CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.s
+
+src/CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.o: src/CMakeFiles/cityflow_lib.dir/flags.make
+src/CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.o: src/Signals/classStop.cpp
+src/CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.o: src/CMakeFiles/cityflow_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/josem/CityFlow/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.o"
+	cd /mnt/c/Users/josem/CityFlow/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.o -MF CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.o.d -o CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.o -c /mnt/c/Users/josem/CityFlow/src/Signals/classStop.cpp
+
+src/CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.i"
+	cd /mnt/c/Users/josem/CityFlow/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/josem/CityFlow/src/Signals/classStop.cpp > CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.i
+
+src/CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.s"
+	cd /mnt/c/Users/josem/CityFlow/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/josem/CityFlow/src/Signals/classStop.cpp -o CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.s
+
+src/CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.o: src/CMakeFiles/cityflow_lib.dir/flags.make
+src/CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.o: src/Signals/classNotSignal.cpp
+src/CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.o: src/CMakeFiles/cityflow_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/josem/CityFlow/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.o"
+	cd /mnt/c/Users/josem/CityFlow/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.o -MF CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.o.d -o CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.o -c /mnt/c/Users/josem/CityFlow/src/Signals/classNotSignal.cpp
+
+src/CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.i"
+	cd /mnt/c/Users/josem/CityFlow/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/josem/CityFlow/src/Signals/classNotSignal.cpp > CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.i
+
+src/CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.s"
+	cd /mnt/c/Users/josem/CityFlow/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/josem/CityFlow/src/Signals/classNotSignal.cpp -o CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.s
+
 # Object files for target cityflow_lib
 cityflow_lib_OBJECTS = \
 "CMakeFiles/cityflow_lib.dir/utility/utility.cpp.o" \
@@ -220,7 +276,11 @@ cityflow_lib_OBJECTS = \
 "CMakeFiles/cityflow_lib.dir/roadnet/trafficlight.cpp.o" \
 "CMakeFiles/cityflow_lib.dir/vehicle/router.cpp.o" \
 "CMakeFiles/cityflow_lib.dir/vehicle/vehicle.cpp.o" \
-"CMakeFiles/cityflow_lib.dir/vehicle/lanechange.cpp.o"
+"CMakeFiles/cityflow_lib.dir/vehicle/lanechange.cpp.o" \
+"CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.o" \
+"CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.o" \
+"CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.o" \
+"CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.o"
 
 # External object files for target cityflow_lib
 cityflow_lib_EXTERNAL_OBJECTS =
@@ -235,9 +295,13 @@ src/libcityflow_lib.a: src/CMakeFiles/cityflow_lib.dir/roadnet/trafficlight.cpp.
 src/libcityflow_lib.a: src/CMakeFiles/cityflow_lib.dir/vehicle/router.cpp.o
 src/libcityflow_lib.a: src/CMakeFiles/cityflow_lib.dir/vehicle/vehicle.cpp.o
 src/libcityflow_lib.a: src/CMakeFiles/cityflow_lib.dir/vehicle/lanechange.cpp.o
+src/libcityflow_lib.a: src/CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.o
+src/libcityflow_lib.a: src/CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.o
+src/libcityflow_lib.a: src/CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.o
+src/libcityflow_lib.a: src/CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.o
 src/libcityflow_lib.a: src/CMakeFiles/cityflow_lib.dir/build.make
 src/libcityflow_lib.a: src/CMakeFiles/cityflow_lib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/josem/CityFlow/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX static library libcityflow_lib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/josem/CityFlow/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX static library libcityflow_lib.a"
 	cd /mnt/c/Users/josem/CityFlow/src && $(CMAKE_COMMAND) -P CMakeFiles/cityflow_lib.dir/cmake_clean_target.cmake
 	cd /mnt/c/Users/josem/CityFlow/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cityflow_lib.dir/link.txt --verbose=$(VERBOSE)
 

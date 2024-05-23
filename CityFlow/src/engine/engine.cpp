@@ -6,7 +6,10 @@
 #include <limits>
 #include <iostream>
 #include <memory>
-
+#include "Signals/classCebra.h"
+#include "Signals/classStop.h"
+#include "Signals/classCeda.h"
+#include "Signals/classNotSignal.h"
 #include <ctime>
 namespace CityFlow
 {
@@ -115,13 +118,12 @@ namespace CityFlow
 
                 auto roads_aux = roadnetData["roads"];
                 nlohmann::json roads_auxJson = roadnetData["roads"];
-
                 for (auto &cebraJson : cebrasJson)
                 {
                     // Crear un objeto Cebra y llenarlo con los datos del objeto JSON
                     Cebra cebra;
                     cebra.id = cebraJson["id"].get<std::string>();
-                    cebra.road= cebraJson["road"].get<std::string>();
+                    cebra.road = cebraJson["road"].get<std::string>();
                     cebra.is_activated = false;
                     cebra.contador_cebra = 0;
                     cebra.contador_volver_a_parar = 0;
@@ -156,6 +158,8 @@ namespace CityFlow
                                 cebra.direccion = "horizontal";
                                 cebraJson["direccion"] = "horizontal";
                             }
+                            mySignal *new_cebra = new ClassCebra(cebra.id, cebra.road, cebra.pos_x, cebra.pos_y, cebra.direccion);
+                            this->addSignal(new_cebra);
                             this->lista_cebras.push_back(cebra);
                         }
                     }
@@ -228,7 +232,8 @@ namespace CityFlow
                                 stopJson["pos_x"] = stop.pos_x;
                                 stopJson["pos_y"] = stop.pos_y;
                             }
-
+                            mySignal *new_stop = new ClassStop(stop.id, stop.road, stop.pos_x, stop.pos_y, stop.direccion);
+                            this->addSignal(new_stop);
                             this->lista_stops.push_back(stop);
                         }
                     }
@@ -242,6 +247,7 @@ namespace CityFlow
 
                 auto notStops = roadnetData["notStops"];
                 nlohmann::json notStopsJson = roadnetData["notStops"];
+
                 for (auto &notStopJson : notStopsJson)
                 {
                     NotStop notStop;
@@ -295,17 +301,14 @@ namespace CityFlow
                                 notStopJson["pos_x"] = notStop.pos_x;
                                 notStopJson["pos_y"] = notStop.pos_y;
                             }
-
+                            mySignal *new_notStop = new ClassNotSignal(notStop.id, notStop.road, notStop.pos_x, notStop.pos_y, notStop.direccion);
+                            this->addSignal(new_notStop);
                             this->lista_notStops.push_back(notStop);
                         }
                     }
                 }
 
-                // Leer el archivo replay_roadnet.json
-                /* std::ifstream replayInputFile("replay_roadnet.json");
-                 nlohmann::json replayData;
-                 replayInputFile >> replayData;
-                 replayInputFile.close();*/
+
 
                 auto cedas = roadnetData["cedas"];
                 nlohmann::json cedasJson = roadnetData["cedas"];
@@ -362,7 +365,8 @@ namespace CityFlow
                                 cedaJson["pos_x"] = ceda.pos_x;
                                 cedaJson["pos_y"] = ceda.pos_y;
                             }
-
+                            mySignal *new_ceda = new ClassCeda(ceda.id, ceda.road, ceda.pos_x, ceda.pos_y, ceda.direccion);
+                            this->addSignal(new_ceda);
                             this->lista_cedas.push_back(ceda);
                         }
                     }
@@ -516,7 +520,7 @@ namespace CityFlow
         }
         else
         {
-           
+
             nextSpeed = vehicle.getNextSpeed(interval).speed;
         }
 
@@ -1002,42 +1006,63 @@ namespace CityFlow
         std::cout << "-------------------------------------------------------------------" << std::endl;
         std::cout << "---------------------NEXTSTEP " << cont << "---------------------------" << std::endl;
         std::cout << "-------------------------------------------------------------------" << std::endl;
+        
         cont++;
+        
+        //Meter el engine en todas las señales 
+        std::vector<mySignal *> signals = this->getSignals(); // Asumiendo que engine está disponible
+        std::vector<ClassCebra *> cebraSignals;
+        if(cont==2){
+            for(auto signal: signals){
+                signal->addEngine(this);
+            }
+        }
         // inicializa las cebras
-        for (auto &cebra : this->lista_cebras)
+        for (auto signal : signals)
+        {
+            ClassCebra *cebraSignal = dynamic_cast<ClassCebra *>(signal);
+            if (cebraSignal)
+            {
+                cebraSignals.push_back(cebraSignal);
+            }
+        }
+
+        for (auto cebra : cebraSignals)
         {
             // si no esta activado
-            if (!cebra.is_activated)
+            if (!cebra->is_activated)
             {
                 // miramos si lo activamos
-                if (cebra.contador_volver_a_parar == 0)
+                if (cebra->contador_volver_a_parar == 0)
                 {
-                    cebra.is_activated = rand() % 2;
+                    cebra->is_activated = rand() % 2;
                 }
                 else
                 {
-                    cebra.contador_volver_a_parar--;
+                    cebra->contador_volver_a_parar--;
                 }
                 // si se ha activado
-                if (cebra.is_activated)
+                if (cebra->is_activated)
                 {
-                    cebra.contador_cebra = 24;
+                    cebra->contador_cebra = 24;
                 }
             }
             else
             {
 
                 //  si ya estaba activado, reducimos el contador
-                cebra.contador_cebra--;
-                if (cebra.contador_cebra == 0)
+                cebra->contador_cebra--;
+                if (cebra->contador_cebra == 0)
                 {
-                    cebra.contador_volver_a_parar = rand() % 36 + 15;
-                    cebra.is_activated = false;
+                    cebra->contador_volver_a_parar = rand() % 36 + 15;
+                    cebra->is_activated = false;
                 }
             }
         }
+
         for (auto &flow : flows)
             flow.nextStep(interval);
+
         planRoute();
         handleWaiting();
         if (laneChange)
@@ -1072,12 +1097,22 @@ namespace CityFlow
     void Engine::crearReplayCebras()
     {
         std::ofstream file("../examples/replyCebras.txt", std::ios::app);
-
-        for (const auto &cebra : lista_cebras)
+        std::vector<mySignal *> signals = this->getSignals(); // Asumiendo que engine está disponible
+        std::vector<ClassCebra *> cebraSignals;
+        
+        for (auto signal : signals)
         {
-            if (cebra.is_activated)
+            ClassCebra *cebraSignal = dynamic_cast<ClassCebra *>(signal);
+            if (cebraSignal)
             {
-                file << cebra.id << " ";
+                cebraSignals.push_back(cebraSignal);
+            }
+        }
+        for (auto cebra : cebraSignals)
+        {
+            if (cebra->is_activated)
+            {
+                file << cebra->id << " ";
             }
         }
         file << std::endl;
@@ -1444,6 +1479,11 @@ namespace CityFlow
             Vehicle *vehicle = iter->second;
             return vehicle->getInfo();
         }
+    }
+
+    void Engine::addSignal(mySignal *signal)
+    {
+        signals.push_back(signal);
     }
 
 }

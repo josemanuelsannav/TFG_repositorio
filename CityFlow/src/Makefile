@@ -130,6 +130,102 @@ cityflow_lib/fast:
 	cd /mnt/c/Users/josem/CityFlow && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cityflow_lib.dir/build.make src/CMakeFiles/cityflow_lib.dir/build
 .PHONY : cityflow_lib/fast
 
+Signals/classCebra.o: Signals/classCebra.cpp.o
+.PHONY : Signals/classCebra.o
+
+# target to build an object file
+Signals/classCebra.cpp.o:
+	cd /mnt/c/Users/josem/CityFlow && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cityflow_lib.dir/build.make src/CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.o
+.PHONY : Signals/classCebra.cpp.o
+
+Signals/classCebra.i: Signals/classCebra.cpp.i
+.PHONY : Signals/classCebra.i
+
+# target to preprocess a source file
+Signals/classCebra.cpp.i:
+	cd /mnt/c/Users/josem/CityFlow && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cityflow_lib.dir/build.make src/CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.i
+.PHONY : Signals/classCebra.cpp.i
+
+Signals/classCebra.s: Signals/classCebra.cpp.s
+.PHONY : Signals/classCebra.s
+
+# target to generate assembly for a file
+Signals/classCebra.cpp.s:
+	cd /mnt/c/Users/josem/CityFlow && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cityflow_lib.dir/build.make src/CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.s
+.PHONY : Signals/classCebra.cpp.s
+
+Signals/classCeda.o: Signals/classCeda.cpp.o
+.PHONY : Signals/classCeda.o
+
+# target to build an object file
+Signals/classCeda.cpp.o:
+	cd /mnt/c/Users/josem/CityFlow && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cityflow_lib.dir/build.make src/CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.o
+.PHONY : Signals/classCeda.cpp.o
+
+Signals/classCeda.i: Signals/classCeda.cpp.i
+.PHONY : Signals/classCeda.i
+
+# target to preprocess a source file
+Signals/classCeda.cpp.i:
+	cd /mnt/c/Users/josem/CityFlow && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cityflow_lib.dir/build.make src/CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.i
+.PHONY : Signals/classCeda.cpp.i
+
+Signals/classCeda.s: Signals/classCeda.cpp.s
+.PHONY : Signals/classCeda.s
+
+# target to generate assembly for a file
+Signals/classCeda.cpp.s:
+	cd /mnt/c/Users/josem/CityFlow && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cityflow_lib.dir/build.make src/CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.s
+.PHONY : Signals/classCeda.cpp.s
+
+Signals/classNotSignal.o: Signals/classNotSignal.cpp.o
+.PHONY : Signals/classNotSignal.o
+
+# target to build an object file
+Signals/classNotSignal.cpp.o:
+	cd /mnt/c/Users/josem/CityFlow && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cityflow_lib.dir/build.make src/CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.o
+.PHONY : Signals/classNotSignal.cpp.o
+
+Signals/classNotSignal.i: Signals/classNotSignal.cpp.i
+.PHONY : Signals/classNotSignal.i
+
+# target to preprocess a source file
+Signals/classNotSignal.cpp.i:
+	cd /mnt/c/Users/josem/CityFlow && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cityflow_lib.dir/build.make src/CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.i
+.PHONY : Signals/classNotSignal.cpp.i
+
+Signals/classNotSignal.s: Signals/classNotSignal.cpp.s
+.PHONY : Signals/classNotSignal.s
+
+# target to generate assembly for a file
+Signals/classNotSignal.cpp.s:
+	cd /mnt/c/Users/josem/CityFlow && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cityflow_lib.dir/build.make src/CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.s
+.PHONY : Signals/classNotSignal.cpp.s
+
+Signals/classStop.o: Signals/classStop.cpp.o
+.PHONY : Signals/classStop.o
+
+# target to build an object file
+Signals/classStop.cpp.o:
+	cd /mnt/c/Users/josem/CityFlow && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cityflow_lib.dir/build.make src/CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.o
+.PHONY : Signals/classStop.cpp.o
+
+Signals/classStop.i: Signals/classStop.cpp.i
+.PHONY : Signals/classStop.i
+
+# target to preprocess a source file
+Signals/classStop.cpp.i:
+	cd /mnt/c/Users/josem/CityFlow && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cityflow_lib.dir/build.make src/CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.i
+.PHONY : Signals/classStop.cpp.i
+
+Signals/classStop.s: Signals/classStop.cpp.s
+.PHONY : Signals/classStop.s
+
+# target to generate assembly for a file
+Signals/classStop.cpp.s:
+	cd /mnt/c/Users/josem/CityFlow && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/cityflow_lib.dir/build.make src/CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.s
+.PHONY : Signals/classStop.cpp.s
+
 engine/archive.o: engine/archive.cpp.o
 .PHONY : engine/archive.o
 
@@ -379,6 +475,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... cityflow_lib"
+	@echo "... Signals/classCebra.o"
+	@echo "... Signals/classCebra.i"
+	@echo "... Signals/classCebra.s"
+	@echo "... Signals/classCeda.o"
+	@echo "... Signals/classCeda.i"
+	@echo "... Signals/classCeda.s"
+	@echo "... Signals/classNotSignal.o"
+	@echo "... Signals/classNotSignal.i"
+	@echo "... Signals/classNotSignal.s"
+	@echo "... Signals/classStop.o"
+	@echo "... Signals/classStop.i"
+	@echo "... Signals/classStop.s"
 	@echo "... engine/archive.o"
 	@echo "... engine/archive.i"
 	@echo "... engine/archive.s"

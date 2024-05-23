@@ -1,4 +1,12 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.o"
+  "CMakeFiles/cityflow_lib.dir/Signals/classCebra.cpp.o.d"
+  "CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.o"
+  "CMakeFiles/cityflow_lib.dir/Signals/classCeda.cpp.o.d"
+  "CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.o"
+  "CMakeFiles/cityflow_lib.dir/Signals/classNotSignal.cpp.o.d"
+  "CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.o"
+  "CMakeFiles/cityflow_lib.dir/Signals/classStop.cpp.o.d"
   "CMakeFiles/cityflow_lib.dir/engine/archive.cpp.o"
   "CMakeFiles/cityflow_lib.dir/engine/archive.cpp.o.d"
   "CMakeFiles/cityflow_lib.dir/engine/engine.cpp.o"

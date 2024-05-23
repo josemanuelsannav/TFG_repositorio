@@ -380,7 +380,6 @@ namespace CityFlow
     ControlInfo Vehicle::getNextSpeed(double interval)
     { // TODO: pass as parameter or not?
 
-        
         if (this->getCurLane() && this->getCurLane()->getBelongRoad() && this->getCurLane()->getBelongRoad()->getId() != this->idRoadAux)
         {
             this->contadorAux = 0;
@@ -413,7 +412,7 @@ namespace CityFlow
         v = max2double(v, vehicleInfo.speed - vehicleInfo.maxNegAcc * interval);
 
         ////////////////////////////////////////////////////////////////
-
+/*
         if (estaEnStop())
         {
             if (contadorStop == 5)
@@ -433,9 +432,9 @@ namespace CityFlow
                 v = 0.0;
                 contadorStop++;
             }
-        }
+        }*/
 
-        if (estaEnCeda())
+      /* if (estaEnCeda())
         {
 
             if (contadorStop == 4)
@@ -456,9 +455,9 @@ namespace CityFlow
                 v = std::max(5.0, 16.0 - (3 * contadorStop));
                 v = min2double(v, getCarFollowSpeed(interval));
             }
-        }
+        }*/
 
-        if (calleSinStop())
+       /* if (calleSinStop())
         {
             if (contadorAux < 5)
             {
@@ -473,39 +472,18 @@ namespace CityFlow
                     v = this->getLeader()->getSpeed();
                 }
             }
-        }
+        }*/
 
-        // Si esta en cebra
-        for (auto cebra : engine->getCebras())
+       
+
+        std::vector<mySignal *> signals = engine->getSignals(); // Asumiendo que engine está disponible
+         
+        for (auto signal : signals)
         {
-
-            if (cebra.is_activated == true)
-            {
-                if ((cebra.pos_x - 24 <= this->getPoint().x && cebra.pos_x - 12 >= this->getPoint().x && cebra.pos_y - 12 <= this->getPoint().y && cebra.pos_y >= this->getPoint().y) || // carretera horizontal izquierda a derecha
-                    (cebra.pos_x <= this->getPoint().x && cebra.pos_x + 12 >= this->getPoint().x && cebra.pos_y - 30 <= this->getPoint().y && cebra.pos_y - 12 >= this->getPoint().y) || // carretera vertical abajo a arriba
-                    (cebra.pos_x + 12 <= this->getPoint().x && cebra.pos_x + 24 >= this->getPoint().x && cebra.pos_y <= this->getPoint().y && cebra.pos_y + 12 >= this->getPoint().y) || // carretera horizontal derceha a izquierda
-                    (cebra.pos_x - 12 <= this->getPoint().x && cebra.pos_x >= this->getPoint().x && cebra.pos_y + 12 <= this->getPoint().y && cebra.pos_y + 30 >= this->getPoint().y))   // carretera vertical arriba a abajo
-                {
-                    v = 0.0;
-                }
-            }
-            else
-            {
-                if (((cebra.pos_x - 24 <= this->getPoint().x && cebra.pos_x - 12 >= this->getPoint().x && cebra.pos_y - 12 <= this->getPoint().y && cebra.pos_y >= this->getPoint().y) ||
-                     (cebra.pos_x <= this->getPoint().x && cebra.pos_x + 12 >= this->getPoint().x && cebra.pos_y - 24 <= this->getPoint().y && cebra.pos_y - 12 >= this->getPoint().y) ||
-                     (cebra.pos_x + 12 <= this->getPoint().x && cebra.pos_x + 24 >= this->getPoint().x && cebra.pos_y <= this->getPoint().y && cebra.pos_y + 12 >= this->getPoint().y) ||
-                     (cebra.pos_x - 12 <= this->getPoint().x && cebra.pos_x >= this->getPoint().x && cebra.pos_y + 12 <= this->getPoint().y && cebra.pos_y + 24 >= this->getPoint().y)) &&
-                    (this->getLeader() != nullptr && this->getLeader()->estaJustoDespuesDeCebra() == true))
-                {
-
-                    if (this->getLeader()->getLeader() != nullptr && (this->getLeader()->getLeader()->getSpeed() < this->getSpeed() || this->getLeader()->getSpeed() == 0.0))
-                    {
-                        v = 0.0;
-                    }
-                }
-            }
+             v = signal->affectVehicle(*this,v );
+             
         }
-
+        
         controlInfo.speed = v;
         return controlInfo;
     }
@@ -669,16 +647,9 @@ namespace CityFlow
 
             laneLink = (LaneLink *)nextDrivable;
 
-           /* if (calleConStop())
-            {
-                return v;
-            }
-            else if (calleSinStop())
-            {
-                return v;
-            }
-            else*/ if ((!laneLink->isAvailable() || !laneLink->getEndLane()->canEnter(this))) // aqui decide si se para o no
-            {                                                                               // not only the first vehicle should follow intersection logic
+        
+            if ((!laneLink->isAvailable() || !laneLink->getEndLane()->canEnter(this))) // aqui decide si se para o no
+            {                                                                          // not only the first vehicle should follow intersection logic
 
                 if (getMinBrakeDistance() > controllerInfo.drivable->getLength() - controllerInfo.dis)
                 {

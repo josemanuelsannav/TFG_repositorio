@@ -5,7 +5,8 @@
 #include "roadnet/roadnet.h"
 #include "engine/archive.h"
 #include "utility/barrier.h"
-
+#include "Signals/mySignal.h"
+#include "Signals/classCebra.h"
 #include <mutex>
 #include <thread>
 #include <set>
@@ -68,6 +69,8 @@ namespace CityFlow
             std::string direccion;
         };
         std::vector<Ceda> lista_cedas;
+
+        std::vector<mySignal *> signals;
 
         std::map<int, std::pair<Vehicle *, int>> vehiclePool;
         std::map<std::string, Vehicle *> vehicleMap;
@@ -184,6 +187,13 @@ namespace CityFlow
         {
             lista_cebras = newCebras;
         }
+
+        const std::vector<mySignal *> &getSignals() const
+        {
+            return signals;
+        }
+        void addSignal(mySignal* signal); // Declaración del método
+
 
         double getInterval() const { return interval; }
 
