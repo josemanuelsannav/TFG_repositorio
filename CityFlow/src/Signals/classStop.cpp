@@ -74,27 +74,37 @@ namespace CityFlow
                 if (notSignal)
                 {
                    if(road->getId() == notSignal->road){
-                      for(auto coche : engine->getRunningVehicles()){
-                        if(notSignal->direccion == "arriba"){
-                            if(coche->getPoint().x >= notSignal->pos_x - 6 && coche->getPoint().x <= notSignal->pos_x + 6 && coche->getPoint().y >= notSignal->pos_y - 70 && coche->getPoint().y <= notSignal->pos_y + 70){
-                                return true;
+                      for (auto coche : engine->getRunningVehicles())
+                        {
+                            if (notSignal->direccion == "arriba")
+                            {
+                                if (coche->getPoint().x >= notSignal->pos_x - 6 && coche->getPoint().x <= notSignal->pos_x + 6 && coche->getPoint().y >= notSignal->pos_y - 70 && coche->getPoint().y <= notSignal->pos_y + 70)
+                                {
+                                    return true;
+                                }
                             }
-                        }else if(notSignal->direccion == "abajo"){
-                            if(coche->getPoint().x >= notSignal->pos_x - 6 && coche->getPoint().x <= notSignal->pos_x + 6 && coche->getPoint().y >= notSignal->pos_y + 70 && coche->getPoint().y <= notSignal->pos_y - 70){
-                                return true;
+                            else if (notSignal->direccion == "abajo")
+                            {
+                                if (coche->getPoint().x >= notSignal->pos_x - 6 && coche->getPoint().x <= notSignal->pos_x + 6 && coche->getPoint().y <= notSignal->pos_y + 70 && coche->getPoint().y >= notSignal->pos_y - 70)
+                                {
+                                    return true;
+                                }
                             }
-
-                        }else if(notSignal->direccion == "derecha"){
-                            if(coche->getPoint().x >= notSignal->pos_x - 70 && coche->getPoint().x <= notSignal->pos_x + 70 && coche->getPoint().y >= notSignal->pos_y - 6 && coche->getPoint().y <= notSignal->pos_y + 6){
-                                return true;
+                            else if (notSignal->direccion == "derecha")
+                            {
+                                if (coche->getPoint().x >= notSignal->pos_x - 70 && coche->getPoint().x <= notSignal->pos_x + 70 && coche->getPoint().y >= notSignal->pos_y - 6 && coche->getPoint().y <= notSignal->pos_y + 6)
+                                {
+                                    return true;
+                                }
                             }
-                        }else if(notSignal->direccion == "izquierda"){
-                            if(coche->getPoint().x >= notSignal->pos_x + 70 && coche->getPoint().x <= notSignal->pos_x - 70 && coche->getPoint().y >= notSignal->pos_y - 6 && coche->getPoint().y <= notSignal->pos_y + 6){
-                                return true;
+                            else if (notSignal->direccion == "izquierda")
+                            {
+                                if (coche->getPoint().x <= notSignal->pos_x + 70 && coche->getPoint().x >= notSignal->pos_x - 70 && coche->getPoint().y >= notSignal->pos_y - 6 && coche->getPoint().y <= notSignal->pos_y + 6)
+                                {
+                                    return true;
+                                }
                             }
-
                         }
-                      }
                    }
                 }
             }

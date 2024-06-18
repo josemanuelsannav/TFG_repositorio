@@ -58,7 +58,7 @@ namespace CityFlow
             int pos_y;
             std::string direccion;
         };
-        std::vector<NotStop> lista_notStops;
+        std::vector<NotStop> lista_notSignals;
 
         struct Ceda
         {
@@ -176,7 +176,7 @@ namespace CityFlow
         }
         const std::vector<NotStop> &getNotStops() const
         {
-            return lista_notStops;
+            return lista_notSignals;
         }
         const std::vector<Ceda> &getCedas() const
         {

@@ -245,16 +245,16 @@ namespace CityFlow
                 replayInputFile >> replayData;
                 replayInputFile.close();
 
-                auto notStops = roadnetData["notStops"];
-                nlohmann::json notStopsJson = roadnetData["notStops"];
+                auto notSignals = roadnetData["notSignals"];
+                nlohmann::json notSignalsJson = roadnetData["notSignals"];
 
-                for (auto &notStopJson : notStopsJson)
+                for (auto &notSignalJson : notSignalsJson)
                 {
-                    NotStop notStop;
-                    notStop.id = notStopJson["id"].get<std::string>();
-                    notStop.road = notStopJson["road"].get<std::string>();
-                    auto road_it = std::find_if(roads_auxJson.begin(), roads_auxJson.end(), [&notStop](const nlohmann::json &roadJson)
-                                                { return roadJson["id"].get<std::string>() == notStop.road; });
+                    NotStop notSignal;
+                    notSignal.id = notSignalJson["id"].get<std::string>();
+                    notSignal.road = notSignalJson["road"].get<std::string>();
+                    auto road_it = std::find_if(roads_auxJson.begin(), roads_auxJson.end(), [&notSignal](const nlohmann::json &roadJson)
+                                                { return roadJson["id"].get<std::string>() == notSignal.road; });
                     if (road_it != roads_auxJson.end())
                     {
                         auto points = (*road_it)["points"];
@@ -267,43 +267,43 @@ namespace CityFlow
 
                             if (x1 > x2)
                             {
-                                notStop.direccion = "izquierda";
-                                notStopJson["direccion"] = "izquierda"; // hacia donde va
-                                notStop.pos_x = x2 + 30;
-                                notStop.pos_y = y2 + 6;
-                                notStopJson["pos_x"] = notStop.pos_x;
-                                notStopJson["pos_y"] = notStop.pos_y;
+                                notSignal.direccion = "izquierda";
+                                notSignalJson["direccion"] = "izquierda"; // hacia donde va
+                                notSignal.pos_x = x2 + 30;
+                                notSignal.pos_y = y2 + 6;
+                                notSignalJson["pos_x"] = notSignal.pos_x;
+                                notSignalJson["pos_y"] = notSignal.pos_y;
                             }
                             else if (x1 < x2)
                             {
-                                notStop.direccion = "derecha";
-                                notStopJson["direccion"] = "derecha";
-                                notStop.pos_x = x2 - 30;
-                                notStop.pos_y = y2 - 6;
-                                notStopJson["pos_x"] = notStop.pos_x;
-                                notStopJson["pos_y"] = notStop.pos_y;
+                                notSignal.direccion = "derecha";
+                                notSignalJson["direccion"] = "derecha";
+                                notSignal.pos_x = x2 - 30;
+                                notSignal.pos_y = y2 - 6;
+                                notSignalJson["pos_x"] = notSignal.pos_x;
+                                notSignalJson["pos_y"] = notSignal.pos_y;
                             }
                             else if (y1 > y2)
                             {
-                                notStop.direccion = "abajo";
-                                notStopJson["direccion"] = "abajo";
-                                notStop.pos_x = x2 - 6;
-                                notStop.pos_y = y2 + 30;
-                                notStopJson["pos_x"] = notStop.pos_x;
-                                notStopJson["pos_y"] = notStop.pos_y;
+                                notSignal.direccion = "abajo";
+                                notSignalJson["direccion"] = "abajo";
+                                notSignal.pos_x = x2 - 6;
+                                notSignal.pos_y = y2 + 30;
+                                notSignalJson["pos_x"] = notSignal.pos_x;
+                                notSignalJson["pos_y"] = notSignal.pos_y;
                             }
                             else if (y1 < y2)
                             {
-                                notStop.direccion = "arriba";
-                                notStopJson["direccion"] = "arriba";
-                                notStop.pos_x = x2 + 6;
-                                notStop.pos_y = y2 - 30;
-                                notStopJson["pos_x"] = notStop.pos_x;
-                                notStopJson["pos_y"] = notStop.pos_y;
+                                notSignal.direccion = "arriba";
+                                notSignalJson["direccion"] = "arriba";
+                                notSignal.pos_x = x2 + 6;
+                                notSignal.pos_y = y2 - 30;
+                                notSignalJson["pos_x"] = notSignal.pos_x;
+                                notSignalJson["pos_y"] = notSignal.pos_y;
                             }
-                            mySignal *new_notStop = new ClassNotSignal(notStop.id, notStop.road, notStop.pos_x, notStop.pos_y, notStop.direccion);
-                            this->addSignal(new_notStop);
-                            this->lista_notStops.push_back(notStop);
+                            mySignal *new_notSignal = new ClassNotSignal(notSignal.id, notSignal.road, notSignal.pos_x, notSignal.pos_y, notSignal.direccion);
+                            this->addSignal(new_notSignal);
+                            this->lista_notSignals.push_back(notSignal);
                         }
                     }
                 }
@@ -375,7 +375,7 @@ namespace CityFlow
                 // Añadir las "cebras" a la sección "static" del archivo replay_roadnet.json
                 replayData["static"]["cebras"] = cebrasJson;
                 replayData["static"]["stops"] = stopsJson;
-                replayData["static"]["notStops"] = notStopsJson;
+                replayData["static"]["notSignals"] = notSignalsJson;
                 replayData["static"]["cedas"] = cedasJson;
                 // Guardar el archivo replay_roadnet.json
                 std::ofstream replayOutputFile("replay_roadnet.json");

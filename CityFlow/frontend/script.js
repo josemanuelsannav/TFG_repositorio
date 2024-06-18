@@ -40,7 +40,7 @@ var nodes = {};
 var edges = {};
 var lista_cebras = [];
 var lista_stops = [];
-var lista_notStops = [];
+var lista_notSignals = [];
 var lista_cedas = [];
 var logs;
 var gettingLog = false;
@@ -343,7 +343,7 @@ function drawRoadnet() {
     ///////////////// */////////////////////////////////////////////////////////////////////////////////
     cebras = [];
     stops = [];
-    notStops = [];
+    notSignals = [];
     cedas = [];
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     trafficLightsG = {};
@@ -381,12 +381,12 @@ function drawRoadnet() {
     }
     lista_stops = stops;
 
-    for (let i = 0, len = roadnet.notStops.length; i < len; ++i) {
-        notStop = roadnet.notStops[i];
-        notStops[notStop.id] = notStop;
-        notStops[notStop.id].pos_y = notStops[notStop.id].pos_y * -1;
+    for (let i = 0, len = roadnet.notSignals.length; i < len; ++i) {
+        notSignal = roadnet.notSignals[i];
+        notSignals[notSignal.id] = notSignal;
+        notSignals[notSignal.id].pos_y = notSignals[notSignal.id].pos_y * -1;
     }
-    lista_notStops = notStops;
+    lista_notSignals = notSignals;
 
     for (let i = 0, len = roadnet.cedas.length; i < len; ++i) {
         ceda = roadnet.cedas[i];
@@ -484,8 +484,8 @@ function drawRoadnet() {
      * Draw CEDA y STOP con PNG
      *///////////////////////////////////////////////////////////////////////////////////////////////////
     PIXI.loader
-        .add('stopImage', 'stopImage.png')
-        .add('cedaImage', 'cedaImage.png');
+        .add('stopImage', 'sprites/stopImage.png')
+        .add('cedaImage', 'sprites/cedaImage.png');
 
     PIXI.loader.load((loader, resources) => {
         for (let cedaId in cedas) {
@@ -526,17 +526,17 @@ function drawRoadnet() {
     /****************************************************************************************************
      * Draw NOT Stop
      *///////////////////////////////////////////////////////////////////////////////////////////////////
-    for (notstopId in notStops) {
-        let notstopGraphics;
+    for (notSignalId in notSignals) {
+        let notSignalGraphics;
         if (debugMode) {
 
-            notstopGraphics = new Graphics();
-            mapContainer.addChild(notstopGraphics);
+            notSignalGraphics = new Graphics();
+            mapContainer.addChild(notSignalGraphics);
         } else {
-            notstopGraphics = mapGraphics;
+            notSignalGraphics = mapGraphics;
         }
 
-        //drawNotStop(notStops[notstopId], notstopGraphics);
+        //drawnotSignal(notSignals[notSignalId], notSignalGraphics);
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -731,8 +731,8 @@ function drawEdge(edge, graphics) {
                 encontrado = true;
             }
         }
-        for (notstopId in notStops) {
-            if (edge.id == notStops[notstopId].road) {
+        for (notSignalId in notSignals) {
+            if (edge.id == notSignals[notSignalId].road) {
                 encontrado = true;
             }
         }
@@ -925,12 +925,11 @@ function drawCeda(ceda, graphics) {
     graphics.endFill();
 }
 
-function drawNotStop(notstop, graphics) {
+function drawnotSignal(notSignal, graphics) {
 
     graphics.beginFill(0x0000ff); // Color azul
+    graphics.drawCircle(notSignal.pos_x, notSignal.pos_y, 18); // x, y son las coordenadas del centro del círculo, radius es el radio
 
-    // Dibujar un cuadrado con centro en notstop.x, notstop.y y lado 12
-    graphics.drawRect(notstop.pos_x - 100, notstop.pos_y - 6, 100, 12);
 
     // Terminar el llenado
     graphics.endFill();
@@ -1068,7 +1067,7 @@ function drawPeaton(step, peatonGraphics) {
         .catch(error => console.error(error));
 }
 
-PIXI.loader.add('peatonImage', 'peatonImage.png');
+PIXI.loader.add('peatonImage', 'sprites/peatonImage.png');
 let peatonSprites = [];
 
 function drawPeatonPng(step,resources) {
@@ -1251,8 +1250,8 @@ function drawStep(step) {
                 encontrado = true;
             }
         }
-        for (notstopId in notStops) {
-            if (tlEdge == notStops[notstopId].road) {
+        for (notSignalId in notSignals) {
+            if (tlEdge == notSignals[notSignalId].road) {
                 encontrado = true;
             }
         }

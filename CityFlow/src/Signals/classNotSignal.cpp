@@ -18,7 +18,7 @@ namespace CityFlow
                 vehicle.contadorAux++;
             }else{
                 
-                rand() % 2 == 0 ? v = 16.0 : v = 0.0;
+                rand() % 2 == 0 ? v =  8.0 : v = 0.0;
                 
                 if (vehicle.getLeader() != nullptr && vehicle.getLeader()->getCurLane() == vehicle.getCurLane() && vehicle.getLeader()->getSpeed() < v)
                 {

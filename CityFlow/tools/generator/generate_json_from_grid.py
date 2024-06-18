@@ -421,7 +421,7 @@ def gridToRoadnet(rowNumber, columnNumber, rowDistances, columnDistances, outRow
         "roads": final_roads,
         "cebras": [],
         "stops": [],
-        "notStops": [],
+        "notSignals": [],
         "cedas": []
     }
 

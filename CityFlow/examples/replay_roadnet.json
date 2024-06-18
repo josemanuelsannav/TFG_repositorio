@@ -3,18 +3,18 @@
         "cebras": [],
         "cedas": [
             {
-                "direccion": "derecha",
+                "direccion": "arriba",
                 "id": "ceda_1",
-                "pos_x": -30,
-                "pos_y": -6,
-                "road": "road_0_1_0"
+                "pos_x": 6,
+                "pos_y": -30,
+                "road": "road_1_0_1"
             },
             {
-                "direccion": "izquierda",
-                "id": "ceda_2",
-                "pos_x": 30,
-                "pos_y": 6,
-                "road": "road_2_1_2"
+                "direccion": "abajo",
+                "id": "ceda_3",
+                "pos_x": -6,
+                "pos_y": 30,
+                "road": "road_1_2_3"
             }
         ],
         "edges": [
@@ -294,20 +294,20 @@
                 "virtual": true
             }
         ],
-        "notStops": [
+        "notSignals": [
             {
-                "direccion": "arriba",
-                "id": "ceda_3",
-                "pos_x": 6,
-                "pos_y": -30,
-                "road": "road_1_0_1"
+                "direccion": "derecha",
+                "id": "notSignal_1",
+                "pos_x": -30,
+                "pos_y": -6,
+                "road": "road_0_1_0"
             },
             {
-                "direccion": "abajo",
-                "id": "ceda_4",
-                "pos_x": -6,
-                "pos_y": 30,
-                "road": "road_1_2_3"
+                "direccion": "izquierda",
+                "id": "notSignal_2",
+                "pos_x": 30,
+                "pos_y": 6,
+                "road": "road_2_1_2"
             }
         ],
         "stops": []

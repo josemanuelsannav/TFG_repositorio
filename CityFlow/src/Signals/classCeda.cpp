@@ -89,7 +89,7 @@ namespace CityFlow
                             }
                             else if (notSignal->direccion == "abajo")
                             {
-                                if (coche->getPoint().x >= notSignal->pos_x - 6 && coche->getPoint().x <= notSignal->pos_x + 6 && coche->getPoint().y >= notSignal->pos_y + 70 && coche->getPoint().y <= notSignal->pos_y - 70)
+                                if (coche->getPoint().x >= notSignal->pos_x - 6 && coche->getPoint().x <= notSignal->pos_x + 6 && coche->getPoint().y <= notSignal->pos_y + 70 && coche->getPoint().y >= notSignal->pos_y - 70)
                                 {
                                     return true;
                                 }
@@ -103,7 +103,7 @@ namespace CityFlow
                             }
                             else if (notSignal->direccion == "izquierda")
                             {
-                                if (coche->getPoint().x >= notSignal->pos_x + 70 && coche->getPoint().x <= notSignal->pos_x - 70 && coche->getPoint().y >= notSignal->pos_y - 6 && coche->getPoint().y <= notSignal->pos_y + 6)
+                                if (coche->getPoint().x <= notSignal->pos_x + 70 && coche->getPoint().x >= notSignal->pos_x - 70 && coche->getPoint().y >= notSignal->pos_y - 6 && coche->getPoint().y <= notSignal->pos_y + 6)
                                 {
                                     return true;
                                 }

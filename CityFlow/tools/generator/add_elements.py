@@ -3,7 +3,7 @@ import json
 import sys
 
 def update_json(json_file, classes):
-    allowed_classes = ["cebras", "stops","notStops","cedas"]
+    allowed_classes = ["cebras", "stops","notSignals","cedas"]
     with open(json_file, 'r') as f:
         data = json.load(f)
 

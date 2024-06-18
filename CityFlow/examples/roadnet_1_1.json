@@ -2488,24 +2488,26 @@
     }
   ],
   "cebras": [],
-  "stops": [
+  "stops": [],
+  "notSignals": [
+    {
+      "road": "road_0_1_0",
+      "id": "notSignal_1"
+    },
+    {
+      "road": "road_2_1_2",
+      "id": "notSignal_2"
+    }
   ],
-  "cedas": [{
-    "road": "road_0_1_0",
-    "id": "ceda_1"
-  },
-  {
-    "road": "road_2_1_2",
-    "id": "ceda_2"
-  }],
-  "notStops": [
+  "cedas": [
     {
       "road": "road_1_0_1",
-      "id": "ceda_3"
-    },{
-      "road": "road_1_2_3",
-      "id": "ceda_4"
-    }
+      "id": "ceda_1"
+    },
     
+    {
+      "road": "road_1_2_3",
+      "id": "ceda_3"
+    }
   ]
 }
