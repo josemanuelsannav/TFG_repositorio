@@ -844,7 +844,9 @@ function drawCebra(cebra, graphics, edges) {
             let squareY = pointA.y + (pointB.y - pointA.y) * offsetFactor;
 
             // Draw a pink square at the calculated position
-            graphics.beginFill(0xFFC0CB); // Pink color
+           // graphics.beginFill(0xFFC0CB); // Pink color
+           //graphics.beginFill(0x000000); // Black color
+           graphics.beginFill(0x586970);
             graphics.drawRect(squareX - squareSize / 2, squareY - squareSize / 2, squareSize, squareSize);
             graphics.endFill();
 
@@ -885,8 +887,8 @@ function drawStop(stop, graphics) {
     const sides = 8; // Número de lados del octógono
     const angleStep = (2 * Math.PI) / sides; // Ángulo entre los lados
 
-    graphics.lineStyle(1, 0xFF0000); // Grosor de 2, color rojo
-    graphics.beginFill(0xFFFFFF); // Color blanco
+    graphics.lineStyle(1, 0xFF0000); //
+    graphics.beginFill(0xFFFFFF); 
 
     // Mover el puntero de dibujo al primer vértice del octógono
     graphics.moveTo(

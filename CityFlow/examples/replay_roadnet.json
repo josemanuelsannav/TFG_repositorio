@@ -1,6 +1,14 @@
 {
     "static": {
-        "cebras": [],
+        "cebras": [
+            {
+                "direccion": "horizontal",
+                "id": "cebras_1",
+                "pos_x": -150,
+                "pos_y": 0,
+                "road": "road_0_1_0"
+            }
+        ],
         "cedas": [
             {
                 "direccion": "arriba",

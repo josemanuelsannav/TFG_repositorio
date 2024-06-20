@@ -2487,7 +2487,10 @@
       "endIntersection": "intersection_1_1"
     }
   ],
-  "cebras": [],
+  "cebras": [{
+    "road": "road_0_1_0",
+    "id": "cebras_1"
+  }],
   "stops": [],
   "notSignals": [
     {
